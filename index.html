@@ -1,0 +1,398 @@
+<html>
+	<head>
+		<Title>Tech the Right Way</Title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','http://www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-73623567-1', 'auto');
+			ga('send', 'pageview');
+		</script>
+		<script>
+			function openLink(url,eventName) {
+				window.open(url)
+				ga('create', 'UA-73623567-1', 'auto');
+				ga('send', 'event', 'External Link', eventName);
+			}
+			$(document).ready(function(){
+				$(".HowToGeekLink").click(function(e) {openLink('http://howtogeek.com','How-To Geek');e.stopPropagation();});
+				$(".ZapierLink").click(function(e) {openLink('http://zapier.com','Zapier');e.stopPropagation();});
+				$(".IFTTTLink").click(function(e) {openLink('http://ifttt.com','IFTTT');e.stopPropagation();});
+				$(".BestBuyLink").click(function(e) {openLink('http://bestbuy.com','Best Buy');e.stopPropagation();});
+				$(".AmazonLink").click(function(e) {openLink('http://amazon.com','Amazon');e.stopPropagation();});
+				$(".SuperUserLink").click(function(e) {openLink('http://superuser.com','SuperUser');e.stopPropagation();});
+				$(".WebAppsLink").click(function(e) {openLink('http://webapps.stackexchange.com','WebApps@SE');e.stopPropagation();});
+				$(".ReadAboutTechLink").click(function(e) {openLink('https://twitter.com/search?src=typd&q=list%3ALevenTechTweets%2FSources','Twitter Tech Articles');e.stopPropagation();});
+				var state = "closed";
+				var open_slide = "";
+				$(".main_title_bar").click(function(e) {
+					var target=$(this).data("target");
+					if (target == open_slide) {return;}
+					if (state == "open") {
+						$(".content").hide();
+						$("#main_title_bars").animate({width: $('body').width()},100);
+						$("#main_content").animate({width: 0},100);
+						$(".content_box").hide();
+						$(".main_title_bar").css('cursor','');
+					}
+					$(".bar_buttons").fadeOut(200);
+					$("#main_title_bars").animate({width: ($('body').width() * 0.2)},500);
+					$("#title_bar_"+target).css('cursor','default');
+					$("#content_box_"+target).show();
+					$("#content_box_"+target).animate({width: ($('body').width() * 0.8)},500);
+					$(".content").show()
+					state = "open";
+					open_slide = target;
+					ga('create', 'UA-73623567-1', 'auto');
+					if (target==1) ga('send', 'event', 'Navigation', 'Open Choose Slide');
+					if (target==2) ga('send', 'event', 'Navigation', 'Open Use Slide');
+					if (target==3) ga('send', 'event', 'Navigation', 'Open Lose Slide');
+				});
+				$(".content_close").click(function() {
+					$(".content").hide();
+					$("#main_title_bars").animate({width: $('body').width()},100);
+					$("#main_content").animate({width: 0},100, function() { 
+						$(".content_box").hide();
+						$(".bar_buttons").fadeIn(200);
+					});
+					open_slide="";
+					$(".main_title_bar").css('cursor','');
+				});
+				$(".suggest_btn").click(function(e) {
+					$("#myModalLabel").text("Suggest Something");
+					var modalContent = "<table><tr height='50px;'><td>What do you think we should add?</td><td><input class='modalInput' id='myModalInput1'></input></td><tr>";
+					modalContent = modalContent + "<tr height='50px;'><td>How will it help?</td><td><input class='modalInput' id='myModalInput2'></input></td><tr>";
+					modalContent = modalContent + "<tr height='50px;'><td>Your Email?<br/><span style='font-size:75%;'>(Optional - we might have questions)</span></td><td><input class='modalInput' id='myModalInput3'></input></td><tr>";
+					$("#myModalBody").html(modalContent);
+					var context = $(this).data("suggestcontext");
+					$("#myModalButton").html("Send Suggestion");
+					$(".modalInput").keyup(function(event){
+						if(event.keyCode == 13){ $("#myModalButton").click(); }
+					});
+					$("#myModal").modal("show");
+					//$('#myModalInput').focus();
+					$("#myModalButton").click(function() {
+						ga('create', 'UA-73623567-1', 'auto');
+						var send_back = context+":"+$('#myModalInput1').val()+"("+$('#myModalInput2').val()+")--"+$('#myModalInput3').val();
+						ga('send', 'event', 'Suggest', send_back);
+					});
+					e.stopPropagation();
+				});
+				$(".ReadReviews").click(function(e) {
+					$("#myModalLabel").text("Find Product Reviews");
+					var modalContent = "This will search Twitter for reviews from approved Tech sources.";
+					modalContent = modalContent + "<br/><br/>It's even better if you enter some search terms in the box below.";
+					modalContent = modalContent + "<br/><br/><input id='myModalInput'></input>";
+					$("#myModalBody").html(modalContent);
+					$("#myModalButton").html("Search Reviews");
+					$("#myModalInput").keyup(function(event){
+						if(event.keyCode == 13){ $("#myModalButton").click(); }
+					});
+					$("#myModal").modal({
+					});
+					//$('#myModalInput').focus();
+					$("#myModalButton").click(function() {
+						window.open("https://twitter.com/search?src=typd&q=list%3ALevenTechTweets%2FSources%20review%20"+$("#myModalInput").val());
+					});
+					e.stopPropagation();
+					ga('create', 'UA-73623567-1', 'auto');
+					ga('send', 'event', 'Search', 'Product Reviews',$("#myModalInput").val());
+				});
+				$(".ReadAboutCompanies").click(function(e) {
+					$("#myModalLabel").text("Research a Tech Company");
+					var modalContent = "This will search Twitter for articles from approved Tech sources.";
+					modalContent = modalContent + "<br/><br/>It's even better if you enter the company name into the box below.";
+					modalContent = modalContent + "<br/><br/><input id='myModalInput'></input>"
+					$("#myModalBody").html(modalContent);
+					$("#myModalButton").html("Research Company");
+					$("#myModalInput").keyup(function(event){
+						if(event.keyCode == 13){ $("#myModalButton").click(); }
+					});
+					$("#myModal").modal({
+					});
+					//$('#myModalInput').focus();
+					$("#myModalButton").click(function() {
+						window.open("https://twitter.com/search?src=typd&q=list%3ALevenTechTweets%2FSources%20review%20"+$("#myModalInput").val());
+					});
+					e.stopPropagation();
+					ga('create', 'UA-73623567-1', 'auto');
+					ga('send', 'event', 'Search', 'Company Articles',$("#myModalInput").val());
+				});
+				$(".ReadAboutProduct").click(function(e) {
+					SearchTwitter("Research the Product","It's even better if you enter the name of the product into the box below.","Research Product","");
+					e.stopPropagation();
+				});
+				$(".FindHowTos").click(function(e) {
+					SearchTwitter("Find How-To's","It's even better if you enter some search terms into the box below.","Find How-To's","How To");
+					e.stopPropagation();
+				});
+				$(".FindDeals").click(function(e) {
+					SearchTwitter("Find Deals","It's even better if you enter some search terms into the box below.","Find Deals","Deal");
+					e.stopPropagation();
+				});
+				function SearchTwitter(title, content, buttonName, searchTerms) {
+					$("#myModalLabel").text(title);
+					var modalContent = "This will search Twitter for articles from approved Tech sources.";
+					modalContent = modalContent + "<br/><br/>" + content;
+					modalContent = modalContent + "<br/><br/><input id='myModalInput'></input>"
+					$("#myModalBody").html(modalContent);
+					$("#myModalButton").html(buttonName);
+					$("#myModalInput").keyup(function(event){
+						if(event.keyCode == 13){ $("#myModalButton").click(); }
+					});
+					$("#myModal").modal({
+					});
+					//$('#myModalInput').focus();
+					$("#myModalButton").click(function() {
+						window.open("https://twitter.com/search?src=typd&q=list%3ALevenTechTweets%2FSources%20"+searchTerms+"%20"+$("#myModalInput").val());
+					});
+					ga('create', 'UA-73623567-1', 'auto');
+					ga('send', 'event', 'Twitter Search', buttonName, $("#myModalInput").val());				
+				}
+				$(".FindAlternatives").click(function(e) {
+					$("#myModalLabel").text("Look for Alternative Options");
+					var modalContent = "This will search Google for alternatives to whatever product you're considering.";
+					modalContent = modalContent + "<br/><br/>Enter the name of that product below.";
+					modalContent = modalContent + "<br/><br/><input id='myModalInput'></input>"
+					$("#myModalBody").html(modalContent);
+					$("#myModalButton").html("Search");
+					$("#myModalInput").keyup(function(event){
+						if(event.keyCode == 13){ $("#myModalButton").click(); }
+					});
+					$("#myModal").modal({
+					});
+					//$('#myModalInput').focus();
+					$("#myModalButton").click(function() {
+						window.open("https://www.google.com/#q="+$("#myModalInput").val()+"+vs+");
+					});
+					ga('create', 'UA-73623567-1', 'auto');
+					ga('send', 'event', "Google Search", "Versus", $("#myModalInput").val());	
+					e.stopPropagation();
+				});
+			});
+			$(window).on('#myModal', 'shown.bs.modal', function () {
+				$('#myModalInput').focus();
+			});
+		</script>
+	</head>
+<body>
+	<style media="screen" type="text/css">
+		body {background-color: black;overflow-x:hidden;overflow-y:auto;}
+		h2 {font-family:"Verdana";}
+		h3 {font-family:"Verdana";font-size:2.5vh;margin-top:0px;}
+		.row_1 {background-color: #33CC66;}
+		.row_2 {background-color: #00CCFF;}
+		.row_3 {background-color: #FFFF99;}
+		#definition {
+			height:10%;min-height:10%;
+		}
+		#header_bar {
+			height:10%;min-height:10%;
+			background-color:black;
+			color:white;
+		}
+		#main_title_bars {float:left;width:100%;}
+		.main_title_bar {
+			height:30%;min-height:30%;
+			width:100%;min-width:100%;
+			cursor:hand;
+			vertical-align:middle;
+			display:block;
+			font-size:6vh;
+			font-style:bold;
+			font-family:"Verdana";
+			padding-left:20px;
+			padding-top:15px;
+		}
+		#main_content {float:left;width:0}
+		.content_box {
+			float:left;
+			height:90%;min-height:90%;
+			width:0;
+			display:none;
+			font-size:400%;
+		}
+		.content {display:none;}
+		.content_close {float:left;}
+		.linkbox {
+			padding-left:2em;
+			width:100%;min-width:100%;
+			overflow-y:auto;
+			margin-bottom:3vh;
+		}
+		.content_header {margin-left:3em;text-decoration:underline;font-family:"Verdana";padding-bottom:20px;}
+		.slide_indent {
+			margin-left:5em;
+		}
+		.slide_button {font-size:2vh;float:left;margin-right:1em;}
+		.button_icon {font-size:5vh;margin-right:0.1em;margin-left:0.1em;}
+		.button_icon_small {font-size:4vh;margin-right:0.1em;margin-left:0.1em;}
+		.nav_bar_header {
+			max-width:($('body').width() * 0.4);
+			float:left;
+			text-shadow: 2px 2px 5px grey;
+			margin-right:1em;
+		}
+		.bar_buttons {
+			font-size:2vh;
+			float:left;
+			margin-right:2em;
+			margin-bottom:1em;
+		}
+		.SuggestIcon {font-size:350%;}
+		.modalInput {margin-left:20px;}
+	</style>
+<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+		</div>
+		<div class="modal-body" id="myModalBody"></div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			<button id="myModalButton" type="submit" data-dismiss="modal" class="btn btn-primary">Okay</button>
+		</div>
+    </div>
+</div>
+</div>
+	<div id="header_bar">
+		<table width="100%"><tr><td width="35%">
+			<div style="margin:10px;text-align:left;color:white;height:100%;min-height:100%;font-size:1.4vh;" id="definition">
+				tech (tek) - <i><b>verb</b>, formal</i><br/>
+				1. to interact with technology as part of day-to-day life<br/>
+				2. to make technology work well and not get in one's way<br/>
+				ex: "My life was an expensive series of errors until I learned to tech properly."
+			</div>
+		</td><td>
+			<div style="color:white;display:inline;font-size:4vh;font-family:'Verdana';height:100%;min-height:100%;">Tech The <b>Right</b> Way</div>
+		</td><td width="25%">
+				<img onclick="openLink('http://www.leventech.net','LevenTech');" style="cursor:hand;float:right;display:inline;" src=".\logo.jpg" height="50px"/>
+				<span style="color:white;float:right;margin-top:15px;">Operated by </span>
+		</td></tr></table>
+	</div>
+	<span id="main_title_bars">
+		<div id="title_bar_1" class="main_title_bar row_1" data-target="1" data-nav_bar="true">
+			<div class="nav_bar_header">Choose It Right</div>
+			<table><tr><td>
+				<button style="font-size:2vh;" class="ReadAboutTechLink bar_buttons btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>Read about Tech</button><br/>
+				<button class="FindDeals bar_buttons btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Look for Deals</button>
+			</td><td>
+				<button class="bar_buttons ReadReviews btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Read Reviews</button><br/>
+				<button class="bar_buttons FindAlternatives btn btn-lg"><i class="button_icon fa fa-google"></i><i class="button_icon fa fa-search"></i><br/>Find Alternatives</button>
+			</td><td>
+				<button class="BestBuyLink bar_buttons btn btn-lg "  ><i class="button_icon fa fa-shopping-cart"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>Best Buy</button><br/>
+				<button class="AmazonLink bar_buttons btn btn-lg " ><i class="button_icon fa fa-shopping-cart"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>Amazon</button>
+			</td><td>
+				<button type="button" class="close bar_buttons suggest_btn" data-SuggestContext="choose" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+			</td></tr></table>
+		</div>
+		<div id="title_bar_2" class="main_title_bar row_2" data-target="2">
+			<div class="nav_bar_header">Use It Right</div>
+			<table><tr><td>
+				<button class="FindHowTos bar_buttons btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Find How-To's</button><br/>
+				<button class="HowToGeekLink bar_buttons btn btn-lg" ><i class="button_icon fa fa-wrench"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>HowToGeek</button>
+			</td><td>
+				<button class="SuperUserLink bar_buttons btn btn-lg btn-disabled" ><i class="button_icon fa fa-comments"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>SuperUser.com</button><br/>
+				<button class="WebAppsLink bar_buttons btn btn-lg btn-disabled" ><i class="button_icon fa fa-comments"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>WebApps@SE</button>
+			</td><td>
+				<button class="IFTTTLink bar_buttons btn btn-lg" ><i class="button_icon_small fa fa-desktop"></i><i class="button_icon_small fa fa-mobile"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>IFTTT</button><br/>
+				<button class="ZapierLink bar_buttons btn btn-lg" ><i class="button_icon_small fa fa-desktop"></i><i class="button_icon_small fa fa-mobile"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>Zapier</button>
+			</td><td>
+				<button type="button" class="close bar_buttons suggest_btn" data-SuggestContext="use" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+			</td></tr></table>
+		</div>
+		<div id="title_bar_3" class="main_title_bar row_3" data-target="3">
+			<div class="nav_bar_header">Lose It Right</div>
+			<table><tr><td>
+				<button class="ReadAboutCompanies bar_buttons btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Research Tech Co.</button>
+				<button class="ReadAboutProduct bar_buttons btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Research Product</button>
+				<button class="bar_buttons FindAlternatives btn btn-lg"><i class="button_icon fa fa-google"></i><i class="button_icon fa fa-search"></i><br/>Find Alternatives</button>
+				<button type="button" class="close bar_buttons suggest_btn" data-SuggestContext="lose" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+			</td></tr></table>
+		</div>
+	</span>
+	<span id="main_content">
+		<div id="content_box_1" class="content_box row_1">
+			<button type="button" class="close content_close slide_button" style="padding:20px;" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i style="font-size:200%;" class="fa fa-arrow-circle-o-right"></i></span></button>
+			<h1 class="content content_header" align="left">How to <b>Choose</b> Tech Right</h1>
+			<div class="linkbox">
+				<button class="ReadAboutTechLink slide_button btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>Read about Tech</button>
+				<button class="FindDeals slide_button btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Look for Deals</button>
+				<button type="button" style="display:block;" class="close slide_button suggest_btn" data-SuggestContext="choose" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+			</div>
+			<div class="linkbox">
+				<h3 class="content" align="left">But wait! - are there other options?</h3>
+				<button class="slide_indent slide_button FindAlternatives btn btn-lg"><i class="button_icon fa fa-google"></i><i class="button_icon fa fa-search"></i><br/>Look for Alternatives</button>
+				<button class="slide_button ReadReviews btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Search for Reviews</button>
+				<button type="button" class="close slide_button suggest_btn" data-SuggestContext="choose" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+			</div>
+			<div class="linkbox">
+				<h3 class="content" align="left">Make your decision, then buy Risk-Free:</h3>
+				<button class="slide_indent BestBuyLink slide_button btn btn-lg "  ><i class="button_icon fa fa-shopping-cart"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>Best Buy</button>
+				<button class="AmazonLink slide_button btn btn-lg" ><i class="button_icon fa fa-shopping-cart"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>Amazon</button>
+				<button type="button" class="close slide_button suggest_btn" data-SuggestContext="choose" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+			</div>
+			<div class="linkbox">
+				<h3 class="content" align="left">Don't forget! Return what you don't like!</h3>
+			</div>
+		</div>
+		<div id="content_box_2" class="content_box row_2">
+			<button type="button" class="close content_close slide_button" style="padding:20px;" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i style="font-size:200%;" class="fa fa-arrow-circle-o-right"></i></span></button>
+			<h1 class="content content_header" align="left">How to <b>Use</b> Tech Right</h1>
+			<div class="linkbox">
+				<h3 class="content" align="left">Set it up right the first time:</h3>
+				<button class="slide_indent FindHowTos slide_button btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Find How-To Guides</button>
+				<button class="HowToGeekLink slide_button btn btn-lg" ><i class="button_icon fa fa-wrench"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>HowToGeek</button>
+				<button type="button" class="close slide_button suggest_btn" data-SuggestContext="use" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+			</div>
+			<div class="linkbox">
+				<h3 class="content" align="left">Solve your problems:</h3>
+				<button disabled="true" title="Coming Soon!" class="slide_indent FindHowTos slide_button btn btn-lg" ><i class="button_icon fa fa-comments"></i><i class="button_icon fa fa-search"></i><br/>Find User Forums</button>
+				<button class="SuperUserLink slide_button btn btn-lg" ><i class="button_icon fa fa-comments"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>SuperUser.com</button>
+				<button class="WebAppsLink slide_button btn btn-lg" ><i class="button_icon fa fa-comments"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>WebApps@SE</button>
+				<button type="button" class="close slide_button suggest_btn" data-SuggestContext="use" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+			</div>
+			<div class="linkbox">
+				<h3 class="content" align="left">Use new features and compatible products:</h3>
+				
+				<button disabled="true" title="Coming Soon!" class="slide_indent slide_button btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Find New Features</button>
+				<button class="IFTTTLink slide_button btn btn-lg" ><i class="button_icon_small fa fa-desktop"></i><i class="button_icon_small fa fa-mobile"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>IFTTT</button>
+				<button class="ZapierLink slide_button btn btn-lg" ><i class="button_icon_small fa fa-desktop"></i><i class="button_icon_small fa fa-mobile"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>Zapier</button>
+				<button type="button" class="close slide_button suggest_btn" data-SuggestContext="use" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+			</div>
+			<div class="linkbox">
+				<h3 class="content" align="left">Voice your concerns:</h3>
+				
+				<button disabled="true" title="Coming Soon!" class="slide_indent slide_button btn btn-lg" ><i class="button_icon fa fa-comments"></i><i class="button_icon fa fa-search"></i><br/>Find Feedback Forms</button>
+				<button type="button" class="close slide_button suggest_btn" data-SuggestContext="use" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+			</div>
+		</div>
+		<div id="content_box_3" class="content_box row_3">
+			<button type="button" class="close content_close slide_button" style="padding:20px;" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i style="font-size:200%;" class="fa fa-arrow-circle-o-right"></i></span></button>
+			<h1 class="content content_header" align="left">How to <b>Lose</b> Tech Right</h1>
+			<div class="linkbox">
+				<h3 class="content" align="left">Know what to expect from the company:</h3>
+				<button class="slide_indent slide_button ReadAboutCompanies btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Research Tech Co.</button>
+				<button type="button" class="close slide_button suggest_btn" data-SuggestContext="lose" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+			</div>
+			<div class="linkbox">
+				<h3 class="content" align="left">Know what to expect from the product</h3>
+				<button class="ReadAboutProduct slide_indent slide_button btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Research Product</button>
+				<button type="button" class="close slide_button suggest_btn" data-SuggestContext="lose" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+			</div>
+			<div class="linkbox">
+				<h3 class="content" align="left">Be ready to switch <u>before</u> you <i>need</i> to</h3>
+				<button class="slide_indent slide_button FindAlternatives btn btn-lg" ><i class="button_icon fa fa-google"></i><i class="button_icon fa fa-search"></i><br/>Look for Alternatives</button>
+				<button type="button" class="close slide_button suggest_btn" data-SuggestContext="lose" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+			</div>
+		</div>
+	</span>
+</body>
+</html>
