@@ -1,0 +1,48 @@
+
+body {background-color: black;}
+.row_1 {background-color: #33CC66;}
+.row_2 {background-color: #00CCFF;}
+.row_3 {background-color: #FFFF99;}
+
+#header_bar {
+	height:10%;min-height:10%;
+	background-color:black;
+	color:white;
+}
+#definition_cell {width:35%;}
+#definition {
+	margin:10px;
+	height:100%;min-height:100%;
+	color:white;
+	text-align:left;font-size:1.4vh;
+}
+#site_title {
+	height:100%;min-height:100%;
+	display:inline;
+	color:white;
+	font-size:4vh;font-family:'Verdana';
+}
+#signature_cell {width:25%;}
+
+#main_title_bars {float:left;width:100%;}
+.main_title_bar {
+	height:30%;min-height:30%;
+	width:100%;min-width:100%;
+	cursor:hand;
+	vertical-align:middle;
+	display:block;
+	font-size:6vh;
+	font-style:bold;
+	font-family:"Verdana";
+	padding-left:20px;
+	padding-top:15px;
+}
+#main_content {float:left;width:0}
+.content_box {
+	float:left;
+	height:90%;min-height:90%;
+	width:0;
+	font-size:400%;
+	width:80%
+	display:none;
+}
