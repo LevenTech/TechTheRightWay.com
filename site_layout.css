@@ -78,6 +78,36 @@ body{
 	animation-iteration-count: 1;
 	animation-fill-mode: forwards;
 }
+.shrunk-to-max .linkbox{
+	width:100%;
+	padding-left:2vw;
+	padding-bottom:0.2em;
+}
+.shrunk-to-max .suggest_btn {display:block}
+.shrunk-to-max .suggest_btn_main {display:none;}
+.shrunk-to-max .linkbox .slide_indent{margin-left:3em;}
+.shrunk-to-max .content_header{display:block;}
+.shrunk-to-max .linkbox .instruction{
+	display:block;
+	font-family:"Verdana";
+	font-size:2.5vh;
+	margin-top:0px;
+}
+.normal-to-max .linkbox{
+	width:100%;
+	padding-left:2vw;
+	padding-bottom:0.2em;
+}
+.normal-to-max .suggest_btn {display:block;}
+.normal-to-max .suggest_btn_main {display:none;}
+.normal-to-max .linkbox .slide_indent{margin-left:3em;}
+.normal-to-max .content_header{display:block;}
+.normal-to-max .linkbox .instruction{
+	display:block;
+	font-family:"Verdana";
+	font-size:2.5vh;
+	margin-top:0px;
+}
 
 .content_box.max-to-normal{
 	animation: maxtonormal;
@@ -250,12 +280,9 @@ body{
 .content_close{
 	display: none;
 }
-.content_header{
-	display: none;
-}
 .suggest_btn{
 	display: none;
-	float: none;
+	float: left;
 }
 .suggest_btn_main{
 	display: inline-block;
@@ -264,10 +291,11 @@ body{
 	/* padding-left:2em; */
 	display: inline-block;
 	overflow-y: hidden;
-	margin-bottom:3vh;
 	overflow-x: hidden;
+	margin-top:.1em;
+	margin-bottom:.1em;
 }
-.linkbox h3{
+.linkbox .instruction{
 	display: none;
 	font-family:"Verdana";
 	font-size:2.5vh;
@@ -277,11 +305,11 @@ body{
 
 
 
-
 h2 {font-family:"Verdana";}
 .content_close {float:left;}
 .content_header {
-	margin-left:3em;
+	display: none;
+	margin-left:2vw;
 	text-decoration:underline;
 	font-family:"Verdana";
 	padding-bottom:20px;
@@ -289,6 +317,7 @@ h2 {font-family:"Verdana";}
 .slide_button {
 	font-size:2vh;
 	margin-right:1em;
+	float:left;
 }
 .button_icon {font-size:5vh;margin-right:0.1em;margin-left:0.1em;}
 .button_icon_small {font-size:4vh;margin-right:0.1em;margin-left:0.1em;}
