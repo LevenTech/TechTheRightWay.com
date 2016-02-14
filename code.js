@@ -10,18 +10,31 @@ $(document).ready(function(){
 
 	$('.content_box').click(function(e)	{
 		var $thisBox = $(e.target).closest('.content_box');
-		var $thisId = $thisBox.attr('id');
-		
+		thisId = $thisBox.attr('id');
+
+		var $otherboxes = $('.content_box:not(#' + thisId + ')')
 
 		var $parent = $thisBox.parent();
+
+		var isExpanding = !$thisBox.is('.expand');
+
+		if (isExpanding)
+		{
+			$parent.addClass('has_expand');
+		}
+
 		if ($thisBox.is('.expand'))
 		{
 			$thisBox.removeClass('expand');
-			$parent.removeClass('has_expand');
+			$otherboxes.removeClass('shrunk');
 		}else{
-			$parent.addClass('has_expand');
-			$('.content_box').removeClass('expand');
 			$thisBox.addClass('expand');
+			$otherboxes.addClass('shrunk');			
+		}
+
+		if (!isExpanding)
+		{
+			$parent.removeClass('has_expand');
 		}
 	});
 
