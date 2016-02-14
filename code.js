@@ -15,9 +15,7 @@ $(document).ready(function(){
 		if (state == "open") {closeSlide(100);}
 		$(".bar_buttons").fadeOut(200);
 		window.setTimeout(function(){
-			$(".slide_content").hide();
 			$("#content_box_"+target).show();
-			$("#content_box_"+target+" .slide_content").show();
 			$("#content_box_"+target).css('width', $('body').width() * 0.8);
 			$("#main_title_bars").animate({width: ($('body').width() * 0.2)},500)
 			$("#title_bar_"+target).css('cursor','default');
