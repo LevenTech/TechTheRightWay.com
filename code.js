@@ -7,33 +7,24 @@ ga('create', 'UA-73623567-1', 'auto');
 ga('send', 'pageview');
 
 $(document).ready(function(){
-	var state = "closed";
-	var open_slide = "";
-	$(".main_title_bar").click(function(e) {
-		var target=$(this).data("target");
-		if (target == open_slide) {return;}
-		if (state == "open") {closeSlide(100);}
-		$(".bar_buttons").fadeOut(200);
-		window.setTimeout(function(){
-			$(".slide_content").hide();
-			$("#content_box_"+target).show();
-			$("#content_box_"+target+" .slide_content").show();
-			$("#content_box_"+target).css('width', $('body').width() * 0.8);
-			$("#main_title_bars").animate({width: ($('body').width() * 0.2)},500)
-			$("#title_bar_"+target).css('cursor','default');
-		},200);
-		state = "open";
-		open_slide = target;
-		ga('create', 'UA-73623567-1', 'auto');
-		if (target==1) ga('send', 'event', 'Navigation', 'Open Choose Slide');
-		if (target==2) ga('send', 'event', 'Navigation', 'Open Use Slide');
-		if (target==3) ga('send', 'event', 'Navigation', 'Open Lose Slide');
+
+	$('.content_box').click(function(e)	{
+		var $thisBox = $(e.target).closest('.content_box');
+		var $thisId = $thisBox.attr('id');
+		
+
+		var $parent = $thisBox.parent();
+		if ($thisBox.is('.expand'))
+		{
+			$thisBox.removeClass('expand');
+			$parent.removeClass('has_expand');
+		}else{
+			$parent.addClass('has_expand');
+			$('.content_box').removeClass('expand');
+			$thisBox.addClass('expand');
+		}
 	});
-	$(".content_close").click(function() {
-		closeSlide(100);
-		open_slide="";state="closed";
-		window.setTimeout(function(){$(".bar_buttons").fadeIn(200);},100);
-	});
+
 	$(".suggest_btn").click(function(e) {
 		$("#myModalLabel").text("Suggest Something");
 		var modalContent = "<table><tr height='50px;'><td>What do you think we should add?</td><td><input class='modalInput' id='myModalInput1'></input></td><tr>";
@@ -107,12 +98,12 @@ $(document).ready(function(){
 $(window).on('#myModal', 'shown.bs.modal', function () {
 	$('#myModalInput').focus();
 });
-
+/*
 function closeSlide(time) {
 	$("#main_title_bars").animate({width: $('body').width()},time);
 	$(".main_title_bar").css('cursor','');
 	$(".content_box").hide();
-}
+}*/
 
 function openLink(url,eventName) {
 	window.open(url)
@@ -130,8 +121,7 @@ function SearchTwitter(title, content, buttonName, searchTerms) {
 	$("#myModalInput").keyup(function(event){
 		if(event.keyCode == 13){ $("#myModalButton").click(); }
 	});
-	$("#myModal").modal({
-	});
+	$("#myModal").modal();
 	//$('#myModalInput').focus();
 	$("#myModalButton").click(function() {
 		window.open("https://twitter.com/search?src=typd&q=list%3ALevenTechTweets%2FSources%20"+searchTerms+"%20"+$("#myModalInput").val());

@@ -3,190 +3,145 @@
 		<Title>Tech the Right Way</Title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href=".\site_layout.css">
+		<style media="screen" type="text/css">
+
+		</style>
+
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-		<link rel="stylesheet" href=".\site_layout.css">
 		<script src=".\code.js"></script>
 	</head>
-<body style="overflow-x:hidden;overflow-y:hidden;">
-	<style media="screen" type="text/css">
-		h2 {font-family:"Verdana";}
-		h3 {font-family:"Verdana";font-size:2.5vh;margin-top:0px;}
-		.slide_content {display:none;}
-		.content_close {float:left;}
-		.linkbox {
-			padding-left:2em;
-			width:100%;min-width:100%;
-			overflow-y:auto;
-			margin-bottom:3vh;
-		}
-		.content_header {margin-left:3em;text-decoration:underline;font-family:"Verdana";padding-bottom:20px;}
-		.slide_indent {
-			margin-left:5em;
-		}
-		.slide_button {font-size:2vh;float:left;margin-right:1em;display:inline-block;}
-		.button_icon {font-size:5vh;margin-right:0.1em;margin-left:0.1em;}
-		.button_icon_small {font-size:4vh;margin-right:0.1em;margin-left:0.1em;}
-		.nav_bar_header {
-			max-width:($('body').width() * 0.4);
-			float:left;
-			text-shadow: 2px 2px 5px grey;
-			margin-right:1em;
-			height:100%;
-		}
-		.bar_buttons {
-			font-size:2vh;
-			float:left;
-			margin-right:2em;
-			margin-bottom:1em;
-		}
-		.SuggestIcon {font-size:350%;}
-		.modalInput {margin-left:20px;}
-	</style>
-<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			<h4 class="modal-title" id="myModalLabel">Modal title</h4>
-		</div>
-		<div class="modal-body" id="myModalBody"></div>
-		<div class="modal-footer">
-			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			<button id="myModalButton" type="submit" data-dismiss="modal" class="btn btn-primary">Okay</button>
-		</div>
-    </div>
-</div>
-</div>
-	<div id="header_bar">
-		<table width="100%"><tr><td id="definition_cell">
-			<div id="definition">
-				tech (tek) - <i><b>verb</b>, formal</i><br/>
-				1. to interact with technology as part of day-to-day life<br/>
-				2. to make technology work well and not get in one's way<br/>
-				ex: "My life was an expensive series of errors until I learned to tech properly."
+	<body>
+	<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Modal title</h4>
 			</div>
-		</td><td>
-			<div id="site_title">Tech The <b>Right</b> Way</div>
-		</td><td id="signature_cell">
-			<img onclick="openLink('http://www.leventech.net','LevenTech');" style="cursor:hand;float:right;display:inline;" src=".\logo.jpg" height="50px"/>
-			<span style="color:white;float:right;margin-top:15px;">Operated by </span>
-		</td></tr></table>
+			<div class="modal-body" id="myModalBody"></div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button id="myModalButton" type="submit" data-dismiss="modal" class="btn btn-primary">Okay</button>
+			</div>
+	    </div>
 	</div>
-	<span id="main_title_bars">
-		<div id="title_bar_1" class="main_title_bar row_1" data-target="1" data-nav_bar="true">
-			<div class="nav_bar_header">Choose It Right</div>
-			<table><tr><td>
-				<button style="font-size:2vh;" class="ReadAboutTechLink bar_buttons btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>Read about Tech</button><br/>
-				<button class="FindDeals bar_buttons btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Look for Deals</button>
+	</div>
+		<div id="header_bar">
+			<table width="100%"><tr><td id="definition_cell">
+				<div id="definition">
+					tech (tek) - <i><b>verb</b>, formal</i><br/>
+					1. to interact with technology as part of day-to-day life<br/>
+					2. to make technology work well and not get in one's way<br/>
+					ex: "My life was an expensive series of errors until I learned to tech properly."
+				</div>
 			</td><td>
-				<button class="bar_buttons ReadReviews btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Read Reviews</button><br/>
-				<button class="bar_buttons FindAlternatives btn btn-lg"><i class="button_icon fa fa-google"></i><i class="button_icon fa fa-search"></i><br/>Find Alternatives</button>
-			</td><td>
-				<button class="BestBuyLink bar_buttons btn btn-lg "  ><i class="button_icon fa fa-shopping-cart"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>Best Buy</button><br/>
-				<button class="AmazonLink bar_buttons btn btn-lg " ><i class="button_icon fa fa-shopping-cart"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>Amazon</button>
-			</td><td>
-				<button type="button" class="close bar_buttons suggest_btn" data-SuggestContext="choose" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+				<div id="site_title">Tech The <b>Right</b> Way</div>
+			</td><td id="signature_cell">
+				<img onclick="openLink('http://www.leventech.net','LevenTech');" style="cursor:hand;float:right;display:inline;" src=".\logo.jpg" height="50px"/>
+				<span style="color:white;float:right;margin-top:15px;">Operated by </span>
 			</td></tr></table>
 		</div>
-		<div id="title_bar_2" class="main_title_bar row_2" data-target="2">
-			<div class="nav_bar_header">Use It Right</div>
-			<table><tr><td>
-				<button class="FindHowTos bar_buttons btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Find How-To's</button><br/>
-				<button class="HowToGeekLink bar_buttons btn btn-lg" ><i class="button_icon fa fa-wrench"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>HowToGeek</button>
-			</td><td>
-				<button class="SuperUserLink bar_buttons btn btn-lg btn-disabled" ><i class="button_icon fa fa-comments"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>SuperUser.com</button><br/>
-				<button class="WebAppsLink bar_buttons btn btn-lg btn-disabled" ><i class="button_icon fa fa-comments"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>WebApps@SE</button>
-			</td><td>
-				<button class="IFTTTLink bar_buttons btn btn-lg" ><i class="button_icon_small fa fa-desktop"></i><i class="button_icon_small fa fa-mobile"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>IFTTT</button><br/>
-				<button class="ZapierLink bar_buttons btn btn-lg" ><i class="button_icon_small fa fa-desktop"></i><i class="button_icon_small fa fa-mobile"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>Zapier</button>
-			</td><td>
-				<button type="button" class="close bar_buttons suggest_btn" data-SuggestContext="use" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
-			</td></tr></table>
-		</div>
-		<div id="title_bar_3" class="main_title_bar row_3" data-target="3">
-			<div class="nav_bar_header">Lose It Right</div>
-			<table><tr><td>
-				<button class="ReadAboutCompanies bar_buttons btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Research Tech Co.</button>
-				<button class="ReadAboutProduct bar_buttons btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Research Product</button>
-				<button class="bar_buttons FindAlternatives btn btn-lg"><i class="button_icon fa fa-google"></i><i class="button_icon fa fa-search"></i><br/>Find Alternatives</button>
-				<button type="button" class="close bar_buttons suggest_btn" data-SuggestContext="lose" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
-			</td></tr></table>
-		</div>
-	</span>
-	<span id="main_content">
-		<div id="content_box_1" class="content_box row_1">
-			<button type="button" class="close content_close slide_button" style="padding:20px;" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i style="font-size:200%;" class="fa fa-arrow-circle-o-right"></i></span></button>
-			<h1 class=" slide_content content_header" align="left">How to <b>Choose</b> Tech Right</h1>
-			<div class="linkbox slide_content">
-				<button class="ReadAboutTechLink slide_button btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>Read about Tech</button>
-				<button class="FindDeals slide_button btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Look for Deals</button>
-				<button type="button" style="display:block;" class="close slide_button suggest_btn" data-SuggestContext="choose" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+		<div id="main_title_bars">
+			<div id="title_bar_1" class="main_title_bar row_1" data-target="1" data-nav_bar="true">
+				<div class="nav_bar_header">Choose It Right</div>
 			</div>
-			<div class="linkbox slide_content">
-				<h3 class="" align="left">But wait! - are there other options?</h3>
-				<button class="slide_indent slide_button FindAlternatives btn btn-lg"><i class="button_icon fa fa-google"></i><i class="button_icon fa fa-search"></i><br/>Look for Alternatives</button>
-				<button class="slide_button ReadReviews btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Search for Reviews</button>
-				<button type="button" class="close slide_button suggest_btn" data-SuggestContext="choose" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+			<div id="title_bar_2" class="main_title_bar row_2" data-target="2">
+				<div class="nav_bar_header">Use It Right</div>
 			</div>
-			<div class="linkbox slide_content">
-				<h3 class="" align="left">Make your decision, then buy Risk-Free:</h3>
-				<button class="slide_indent BestBuyLink slide_button btn btn-lg "  ><i class="button_icon fa fa-shopping-cart"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>Best Buy</button>
-				<button class="AmazonLink slide_button btn btn-lg" ><i class="button_icon fa fa-shopping-cart"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>Amazon</button>
-				<button type="button" class="close slide_button suggest_btn" data-SuggestContext="choose" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
-			</div>
-			<div class="linkbox slide_content">
-				<h3 class="" align="left">Don't forget! Return what you don't like!</h3>
+			<div id="title_bar_3" class="main_title_bar row_3" data-target="3">
+				<div class="nav_bar_header">Lose It Right</div>
 			</div>
 		</div>
-		<div id="content_box_2" class="content_box row_2">
-			<button type="button" class="close content_close slide_button" style="padding:20px;" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i style="font-size:200%;" class="fa fa-arrow-circle-o-right"></i></span></button>
-			<h1 class=" slide_content content_header" align="left">How to <b>Use</b> Tech Right</h1>
-			<div class="linkbox slide_content">
-				<h3 class="" align="left">Set it up right the first time:</h3>
-				<button class="slide_indent FindHowTos slide_button btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Find How-To Guides</button>
-				<button class="HowToGeekLink slide_button btn btn-lg" ><i class="button_icon fa fa-wrench"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>HowToGeek</button>
-				<button type="button" class="close slide_button suggest_btn" data-SuggestContext="use" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+		<div id="main_content">
+			<div id="content_box_1" class="content_box row_1">
+				<button type="button" class="close content_close" style="padding:20px;" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i style="font-size:200%;" class="fa fa-arrow-circle-o-right"></i></span></button>
+				<h1 class="  content_header" align="left">How to <b>Choose</b> Tech Right</h1>
+				<div class="linkbox ">
+					<button class="ReadAboutTechLink slide_button btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>Read about Tech</button>
+					<button class="FindDeals slide_button btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Look for Deals</button>
+					<button type="button" class="close slide_button suggest_btn" data-SuggestContext="choose" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+				</div>
+				<div class="linkbox ">
+					<h3 class="" align="left">But wait! - are there other options?</h3>
+					<button class="slide_indent slide_button FindAlternatives btn btn-lg"><i class="button_icon fa fa-google"></i><i class="button_icon fa fa-search"></i><br/>Look for Alternatives</button>
+					<button class="slide_button ReadReviews btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Search for Reviews</button>
+					<button type="button" class="close slide_button suggest_btn" data-SuggestContext="choose" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+				</div>
+				<div class="linkbox ">
+					<h3 class="" align="left">Make your decision, then buy Risk-Free:</h3>
+					<button class="slide_indent BestBuyLink slide_button btn btn-lg "  ><i class="button_icon fa fa-shopping-cart"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>Best Buy</button>
+					<button class="AmazonLink slide_button btn btn-lg" ><i class="button_icon fa fa-shopping-cart"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>Amazon</button>
+					<button type="button" class="close slide_button suggest_btn" data-SuggestContext="choose" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+				</div>
+				<div class="linkbox ">
+					<button type="button" class="close slide_button suggest_btn suggest_btn_main" data-SuggestContext="choose" aria-label="Suggest">
+						<span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span>
+					</button>
+				</div>
+				<div class="linkbox ">
+					<h3 class="" align="left">Don't forget! Return what you don't like!</h3>
+				</div>
 			</div>
-			<div class="linkbox slide_content">
-				<h3 class="" align="left">Solve your problems:</h3>
-				<button disabled="true" title="Coming Soon!" class="slide_indent FindHowTos slide_button btn btn-lg" ><i class="button_icon fa fa-comments"></i><i class="button_icon fa fa-search"></i><br/>Find User Forums</button>
-				<button class="SuperUserLink slide_button btn btn-lg" ><i class="button_icon fa fa-comments"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>SuperUser.com</button>
-				<button class="WebAppsLink slide_button btn btn-lg" ><i class="button_icon fa fa-comments"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>WebApps@SE</button>
-				<button type="button" class="close slide_button suggest_btn" data-SuggestContext="use" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+			<div id="content_box_2" class="content_box row_2">
+				<button type="button" class="close content_close" style="padding:20px;" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i style="font-size:200%;" class="fa fa-arrow-circle-o-right"></i></span></button>
+				<h1 class="  content_header" align="left">How to <b>Use</b> Tech Right</h1>
+				<div class="linkbox ">
+					<h3 class="" align="left">Set it up right the first time:</h3>
+					<button class="slide_indent FindHowTos slide_button btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Find How-To Guides</button>
+					<button class="HowToGeekLink slide_button btn btn-lg" ><i class="button_icon fa fa-wrench"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>HowToGeek</button>
+					<button type="button" class="close slide_button suggest_btn" data-SuggestContext="use" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+				</div>
+				<div class="linkbox ">
+					<h3 class="" align="left">Solve your problems:</h3>
+					<button disabled="true" title="Coming Soon!" class="slide_indent FindHowTos slide_button btn btn-lg" ><i class="button_icon fa fa-comments"></i><i class="button_icon fa fa-search"></i><br/>Find User Forums</button>
+					<button class="SuperUserLink slide_button btn btn-lg" ><i class="button_icon fa fa-comments"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>SuperUser.com</button>
+					<button class="WebAppsLink slide_button btn btn-lg" ><i class="button_icon fa fa-comments"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>WebApps@SE</button>
+					<button type="button" class="close slide_button suggest_btn" data-SuggestContext="use" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+				</div>
+				<div class="linkbox ">
+					<h3 class="" align="left">Use new features and compatible products:</h3>
+					<button disabled="true" title="Coming Soon!" class="slide_indent slide_button btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Find New Features</button>
+					<button class="IFTTTLink slide_button btn btn-lg" ><i class="button_icon_small fa fa-desktop"></i><i class="button_icon_small fa fa-mobile"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>IFTTT</button>
+					<button class="ZapierLink slide_button btn btn-lg" ><i class="button_icon_small fa fa-desktop"></i><i class="button_icon_small fa fa-mobile"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>Zapier</button>
+					<button type="button" class="close slide_button suggest_btn" data-SuggestContext="use" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+				</div>
+				<div class="linkbox ">
+					<h3 class="" align="left">Voice your concerns:</h3>
+					<button disabled="true" title="Coming Soon!" class="slide_indent slide_button btn btn-lg" ><i class="button_icon fa fa-comments"></i><i class="button_icon fa fa-search"></i><br/>Find Feedback Forms</button>
+					<button type="button" class="close slide_button suggest_btn" data-SuggestContext="use" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+				</div>
+				<div class="linkbox ">
+					<button type="button" class="close slide_button suggest_btn suggest_btn_main" data-SuggestContext="choose" aria-label="Suggest">
+						<span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span>
+					</button>
+				</div>
 			</div>
-			<div class="linkbox slide_content">
-				<h3 class="" align="left">Use new features and compatible products:</h3>
-				<button disabled="true" title="Coming Soon!" class="slide_indent slide_button btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Find New Features</button>
-				<button class="IFTTTLink slide_button btn btn-lg" ><i class="button_icon_small fa fa-desktop"></i><i class="button_icon_small fa fa-mobile"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>IFTTT</button>
-				<button class="ZapierLink slide_button btn btn-lg" ><i class="button_icon_small fa fa-desktop"></i><i class="button_icon_small fa fa-mobile"></i><i class="button_icon_small glyphicon glyphicon-new-window"></i><br/>Zapier</button>
-				<button type="button" class="close slide_button suggest_btn" data-SuggestContext="use" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+			<div id="content_box_3" class="content_box row_3">
+				<button type="button" class="close content_close" style="padding:20px;" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i style="font-size:200%;" class="fa fa-arrow-circle-o-right"></i></span></button>
+				<h1 class=" content_header" align="left">How to <b>Lose</b> Tech Right</h1>
+				<div class="linkbox ">
+					<h3 class="" align="left">Know what to expect from the company:</h3>
+					<button class="slide_indent slide_button ReadAboutCompanies btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Research Tech Co.</button>
+					<button type="button" class="close slide_button suggest_btn" data-SuggestContext="lose" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+				</div>
+				<div class="linkbox ">
+					<h3 class="" align="left">Know what to expect from the product</h3>
+					<button class="ReadAboutProduct slide_indent slide_button btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Research Product</button>
+					<button type="button" class="close slide_button suggest_btn" data-SuggestContext="lose" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+				</div>
+				<div class="linkbox ">
+					<h3 class="" align="left">Be ready to switch <u>before</u> you <i>need</i> to</h3>
+					<button class="slide_indent slide_button FindAlternatives btn btn-lg" ><i class="button_icon fa fa-google"></i><i class="button_icon fa fa-search"></i><br/>Look for Alternatives</button>
+					<button type="button" class="close slide_button suggest_btn" data-SuggestContext="lose" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
+				</div>
+				<div class="linkbox ">
+					<button type="button" class="close slide_button suggest_btn suggest_btn_main" data-SuggestContext="choose" aria-label="Suggest">
+						<span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span>
+					</button>
+				</div>
 			</div>
-			<div class="linkbox slide_content">
-				<h3 class="" align="left">Voice your concerns:</h3>
-				<button disabled="true" title="Coming Soon!" class="slide_indent slide_button btn btn-lg" ><i class="button_icon fa fa-comments"></i><i class="button_icon fa fa-search"></i><br/>Find Feedback Forms</button>
-				<button type="button" class="close slide_button suggest_btn" data-SuggestContext="use" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
-			</div>
-		</div>
-		<div id="content_box_3" class="content_box row_3">
-			<button type="button" class="close content_close slide_button" style="padding:20px;" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i style="font-size:200%;" class="fa fa-arrow-circle-o-right"></i></span></button>
-			<h1 class="slide_content content_header" align="left">How to <b>Lose</b> Tech Right</h1>
-			<div class="linkbox slide_content">
-				<h3 class="" align="left">Know what to expect from the company:</h3>
-				<button class="slide_indent slide_button ReadAboutCompanies btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Research Tech Co.</button>
-				<button type="button" class="close slide_button suggest_btn" data-SuggestContext="lose" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
-			</div>
-			<div class="linkbox slide_content">
-				<h3 class="" align="left">Know what to expect from the product</h3>
-				<button class="ReadAboutProduct slide_indent slide_button btn btn-lg" ><i class="button_icon fa fa-newspaper-o"></i><i class="button_icon fa fa-search"></i><br/>Research Product</button>
-				<button type="button" class="close slide_button suggest_btn" data-SuggestContext="lose" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
-			</div>
-			<div class="linkbox slide_content">
-				<h3 class="" align="left">Be ready to switch <u>before</u> you <i>need</i> to</h3>
-				<button class="slide_indent slide_button FindAlternatives btn btn-lg" ><i class="button_icon fa fa-google"></i><i class="button_icon fa fa-search"></i><br/>Look for Alternatives</button>
-				<button type="button" class="close slide_button suggest_btn" data-SuggestContext="lose" aria-label="Suggest"><span aria-hidden="true"><i class="SuggestIcon fa fa-plus"></i><br/>Suggest</span></button>
-			</div>
-		</div>
-	</span>
-</body>
+		</span>
+	</body>
 </html>
